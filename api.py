@@ -22,7 +22,6 @@ y = []
 vectorizer = CountVectorizer(stop_words='english')
 
 def retrieveTweet(data_url):
-
     tweets_data_path = data_url
     tweets_file = open(tweets_data_path, "r")
     for line in tweets_file:
@@ -37,9 +36,7 @@ def retrieveProcessedData(Pdata_url):
         if tweets_data[i]['id']==sent['id'][i]:
             x.append(tweets_data[i]['text'])
             y.append(sent['sentiment'][i])
-        
-
-     
+            
 retrieveTweet('C:/Users/dhuma/OneDrive/Documents/Python/Depression/data/tweetdata.txt')  
 retrieveProcessedData('C:/Users/dhuma/OneDrive/Documents/Python/Depression/processed_data/output.xlsx')
 from sklearn import tree
@@ -55,7 +52,6 @@ def datreeINPUT(inputtweet):
     inputdtree= vectorizer.transform([inputtweet])
     predictt = dtree.predict(inputdtree)
     return predictt
-
 
 @app.route('/')
 def home():
@@ -77,4 +73,4 @@ def depression():
         print(request)
         return "Hello"
 
-app.run(debug=True)
+app.run()
