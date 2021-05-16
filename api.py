@@ -55,10 +55,11 @@ def datreeINPUT(inputtweet):
 
 @app.route('/')
 def home():
-    print("We have a visitor!")
-    return render_template('index.html')
+    reply="We have a visitor!"
+    print(reply)
+    return jsonify(reply)
 
-@app.route('/depression', methods=['GET' , 'POST'])
+@app.route('/depression', methods=['POST'])
 def depression():
     if request.method=='POST':
         print("post req received")
@@ -67,10 +68,5 @@ def depression():
         answer=str(answer[0])
         print(answer)
         return jsonify(answer)
-        
-    elif request.method=='GET':
-        print("get req received")
-        print(request)
-        return "Hello"
 
 app.run()
